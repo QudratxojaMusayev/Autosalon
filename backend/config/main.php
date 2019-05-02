@@ -42,9 +42,11 @@ return [
         ],
         /*
         'urlManager' => [
+            'baseUrl' => '/',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<action> => <action>'
             ],
         ],
         */
