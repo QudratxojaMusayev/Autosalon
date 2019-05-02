@@ -34,9 +34,25 @@ use yii\helpers\Url;
                 [
                     'options' => ['class' => 'sidebar-menu'],
                     'items' => [
-                        ['label' => 'Menu', 'options' => ['class' => 'header']],
-                        ['label' => 'Dashboard', 'icon' => 'fa fa-dashboard', 
-                            'url' => ['/'], 'active' => $this->context->route == 'site/index'
+                        [
+                            'label' => 'Menu',
+                            'options' => ['class' => 'header']
+                        ],
+                        [
+                            'label' => 'Avtomobillar',
+                            'icon' => 'fa fa-car',
+                            'url' => ['/'],
+                            'active' => $this->context->route == 'site/index'
+                        ],
+                        [
+                            'label' => 'Pozitsiyalar',
+                            'icon' => 'fa fa-cogs',
+                            'url' => ['/'],
+                        ],
+                        [
+                            'label' => 'Ranglar',
+                            'icon' => 'fa fa-paint-brush',
+                            'url' => ['color/index'],
                         ],
                         [
                             'label' => 'Master',
