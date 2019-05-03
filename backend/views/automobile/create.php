@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Automobile */
 
-$this->title = "Automobil qo'shish";
-$this->params['breadcrumbs'][] = ['label' => 'Automobillar', 'url' => ['index']];
+$this->title = 'Create Automobile';
+$this->params['breadcrumbs'][] = ['label' => 'Automobiles', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="automobile-create">

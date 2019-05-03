@@ -101,6 +101,8 @@ class PositionController extends Controller
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {
@@ -123,5 +125,29 @@ class PositionController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionLists($id)
+    {
+        //echo "<pre>";print_r($id);die;
+        $countPosts = Position::find()
+            ->where(['marka_id' => $id])
+            ->count();
+
+        $posts = Position::find()
+            ->where(['marka_id' => $id])
+            ->orderBy('id DESC')
+            ->all();
+
+        if($countPosts>0){
+            foreach($posts as $post){
+
+                echo "<option value='".$post->id."'>".$post->description."</option>";
+            }
+        }
+        else{
+            echo "<option>-</option>";
+        }
+
     }
 }

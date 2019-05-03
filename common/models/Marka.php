@@ -13,6 +13,9 @@ use yii\db\Expression;
  * @property string $name
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property Automobile[] $automobiles
+ * @property Position[] $positions
  */
 class Marka extends \yii\db\ActiveRecord
 {
@@ -30,7 +33,7 @@ class Marka extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'created_at', 'updated_at'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -43,10 +46,26 @@ class Marka extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Nomi',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => 'Yangilangan',
+            'name' => 'Name',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAutomobiles()
+    {
+        return $this->hasMany(Automobile::className(), ['marka_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPositions()
+    {
+        return $this->hasMany(Position::className(), ['marka_id' => 'id']);
     }
 
     public function behaviors()

@@ -12,6 +12,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'defaultRoute' => 'automobile/index',
     'aliases' => [
         '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
     ],

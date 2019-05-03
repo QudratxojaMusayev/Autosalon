@@ -10,7 +10,7 @@ use yii\db\Expression;
  * This is the model class for table "automobile".
  *
  * @property int $id
- * @property string $name
+ * @property int $marka_id
  * @property int $color_id
  * @property int $position_id
  * @property string $content
@@ -21,6 +21,7 @@ use yii\db\Expression;
  *
  * @property Color $color
  * @property Position $position
+ * @property Marka $marka
  */
 class Automobile extends \yii\db\ActiveRecord
 {
@@ -38,14 +39,14 @@ class Automobile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'color_id', 'position_id', 'content', 'price', 'count'], 'required'],
-            [['color_id', 'position_id', 'count'], 'integer'],
+            [['marka_id', 'color_id', 'position_id', 'content', 'price', 'count', 'created_at', 'updated_at'], 'required'],
+            [['marka_id', 'color_id', 'position_id', 'count'], 'integer'],
             [['content'], 'string'],
             [['price'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
-            [['name'], 'string', 'max' => 255],
             [['color_id'], 'exist', 'skipOnError' => true, 'targetClass' => Color::className(), 'targetAttribute' => ['color_id' => 'id']],
             [['position_id'], 'exist', 'skipOnError' => true, 'targetClass' => Position::className(), 'targetAttribute' => ['position_id' => 'id']],
+            [['marka_id'], 'exist', 'skipOnError' => true, 'targetClass' => Marka::className(), 'targetAttribute' => ['marka_id' => 'id']],
         ];
     }
 
@@ -56,14 +57,14 @@ class Automobile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Markasi',
-            'color_id' => 'Rangi',
-            'position_id' => 'Pozitsiyasi',
-            'content' => 'Xarakteristika',
-            'price' => 'Narx',
-            'count' => 'Soni',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => "Qo'shilgan",
+            'marka_id' => 'Marka ID',
+            'color_id' => 'Color ID',
+            'position_id' => 'Position ID',
+            'content' => 'Content',
+            'price' => 'Price',
+            'count' => 'Count',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
@@ -81,6 +82,14 @@ class Automobile extends \yii\db\ActiveRecord
     public function getPosition()
     {
         return $this->hasOne(Position::className(), ['id' => 'position_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMarka()
+    {
+        return $this->hasOne(Marka::className(), ['id' => 'marka_id']);
     }
 
     public function behaviors()
