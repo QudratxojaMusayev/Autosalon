@@ -3,6 +3,8 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "automobile".
@@ -12,6 +14,7 @@ use Yii;
  * @property int $color_id
  * @property int $position_id
  * @property string $content
+ * @property double $price
  * @property int $count
  * @property string $created_at
  * @property string $updated_at
@@ -35,9 +38,10 @@ class Automobile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'color_id', 'position_id', 'content', 'count', 'created_at', 'updated_at'], 'required'],
+            [['name', 'color_id', 'position_id', 'content', 'price', 'count'], 'required'],
             [['color_id', 'position_id', 'count'], 'integer'],
             [['content'], 'string'],
+            [['price'], 'number'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['color_id'], 'exist', 'skipOnError' => true, 'targetClass' => Color::className(), 'targetAttribute' => ['color_id' => 'id']],
@@ -52,13 +56,14 @@ class Automobile extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'color_id' => 'Color ID',
-            'position_id' => 'Position ID',
-            'content' => 'Content',
-            'count' => 'Count',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Markasi',
+            'color_id' => 'Rangi',
+            'position_id' => 'Pozitsiyasi',
+            'content' => 'Xarakteristika',
+            'price' => 'Narx',
+            'count' => 'Soni',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => "Qo'shilgan",
         ];
     }
 
@@ -76,5 +81,15 @@ class Automobile extends \yii\db\ActiveRecord
     public function getPosition()
     {
         return $this->hasOne(Position::className(), ['id' => 'position_id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 }

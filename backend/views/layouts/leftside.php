@@ -41,7 +41,7 @@ use yii\helpers\Url;
                         [
                             'label' => 'Avtomobillar',
                             'icon' => 'fa fa-car',
-                            'url' => ['/'],
+                            'url' => ['automobile/index'],
                             'active' => $this->context->route == 'site/index'
                         ],
                         [
