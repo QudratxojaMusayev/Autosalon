@@ -2,8 +2,8 @@
 
 namespace backend\controllers;
 
+use common\models\Color;
 use Yii;
-use app\models\Color;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -101,6 +101,8 @@ class ColorController extends Controller
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {

@@ -1,11 +1,14 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
- * This is the model class for table "position".
+ * This is the model class for table "color".
  *
  * @property int $id
  * @property string $code
@@ -15,14 +18,14 @@ use Yii;
  *
  * @property Automobile[] $automobiles
  */
-class Position extends \yii\db\ActiveRecord
+class Color extends ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'position';
+        return 'color';
     }
 
     /**
@@ -31,9 +34,9 @@ class Position extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['code', 'description', 'created_at', 'updated_at'], 'required'],
+            [['code', 'description'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['code'], 'string', 'max' => 10],
+            [['code'], 'string', 'max' => 5],
             [['description'], 'string', 'max' => 255],
         ];
     }
@@ -45,10 +48,10 @@ class Position extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'code' => 'Rang kodi',
+            'description' => 'Izoh',
+            'created_at' => 'Yartilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
 
@@ -57,6 +60,16 @@ class Position extends \yii\db\ActiveRecord
      */
     public function getAutomobiles()
     {
-        return $this->hasMany(Automobile::className(), ['position_id' => 'id']);
+        return $this->hasMany(Automobile::className(), ['color_id' => 'id']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 }

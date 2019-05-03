@@ -45,9 +45,14 @@ use yii\helpers\Url;
                             'active' => $this->context->route == 'site/index'
                         ],
                         [
+                            'label' => 'Markalar',
+                            'icon' => 'fa fa-trademark',
+                            'url' => ['marka/index'],
+                        ],
+                        [
                             'label' => 'Pozitsiyalar',
                             'icon' => 'fa fa-cogs',
-                            'url' => ['/'],
+                            'url' => ['position/index'],
                         ],
                         [
                             'label' => 'Ranglar',

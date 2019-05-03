@@ -1,14 +1,13 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
- * This is the model class for table "color".
+ * This is the model class for table "position".
  *
  * @property int $id
  * @property string $code
@@ -18,14 +17,14 @@ use yii\db\Expression;
  *
  * @property Automobile[] $automobiles
  */
-class Color extends ActiveRecord
+class Position extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'color';
+        return 'position';
     }
 
     /**
@@ -36,7 +35,7 @@ class Color extends ActiveRecord
         return [
             [['code', 'description'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
-            [['code'], 'string', 'max' => 5],
+            [['code'], 'string', 'max' => 10],
             [['description'], 'string', 'max' => 255],
         ];
     }
@@ -48,10 +47,10 @@ class Color extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'code' => 'Kodi',
+            'description' => 'Izoh',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
 
@@ -60,7 +59,7 @@ class Color extends ActiveRecord
      */
     public function getAutomobiles()
     {
-        return $this->hasMany(Automobile::className(), ['color_id' => 'id']);
+        return $this->hasMany(Automobile::className(), ['position_id' => 'id']);
     }
 
     public function behaviors()
