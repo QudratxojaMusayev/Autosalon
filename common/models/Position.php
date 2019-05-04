@@ -35,7 +35,7 @@ class Position extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['marka_id', 'code', 'description', 'created_at', 'updated_at'], 'required'],
+            [['marka_id', 'code', 'description'], 'required'],
             [['marka_id'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['code'], 'string', 'max' => 10],
@@ -50,12 +50,11 @@ class Position extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'marka_id' => 'Marka ID',
-            'code' => 'Code',
-            'description' => 'Description',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'marka_id' => 'Markasi',
+            'code' => 'Kod',
+            'description' => 'Izoh',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
 

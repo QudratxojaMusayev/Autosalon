@@ -50,7 +50,7 @@ class Color extends ActiveRecord
             'id' => 'ID',
             'code' => 'Rang kodi',
             'description' => 'Izoh',
-            'created_at' => 'Yartilgan',
+            'created_at' => 'Yaratilgan',
             'updated_at' => 'Yangilangan',
         ];
     }

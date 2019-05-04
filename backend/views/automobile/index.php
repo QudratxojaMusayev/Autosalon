@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Automobiles';
+$this->title = 'Avtomobillar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="automobile-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Automobile', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,15 +23,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'marka_id',
-            'color_id',
-            'position_id',
+            [
+                'attribute' => 'marka_id',
+                'value' => 'marka.name',
+            ],
+            [
+                'attribute' => 'color_id',
+                'value' => 'color.description',
+            ],
+            [
+                'attribute' => 'position_id',
+                'value' => 'position.code',
+            ],
             'content:ntext',
-            //'price',
-            //'count',
-            //'created_at',
-            //'updated_at',
+            'price',
+            'count',
+            'created_at',
+            'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

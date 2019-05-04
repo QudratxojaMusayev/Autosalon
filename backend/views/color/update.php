@@ -3,12 +3,12 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Color */
+/* @var $model common\models\Color */
 
-$this->title = 'Update Color: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Colors', 'url' => ['index']];
+$this->title = 'Yangilash: ' . $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Ranglar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Yangilash';
 ?>
 <div class="color-update">
 

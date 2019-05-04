@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Position */
 
-$this->title = 'Create Position';
-$this->params['breadcrumbs'][] = ['label' => 'Positions', 'url' => ['index']];
+$this->title = 'Positsiya qo\'shish';
+$this->params['breadcrumbs'][] = ['label' => 'Positsiyalar', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="position-create">

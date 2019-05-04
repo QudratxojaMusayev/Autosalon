@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Positions';
+$this->title = 'Pozitsiyalar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="position-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Position', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Qo\'shish', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,12 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'marka_id',
+            [
+                'attribute' => 'marka_id',
+                'value' => 'marka.name',
+            ],
             'code',
             'description',
             'created_at',
-            //'updated_at',
+            'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

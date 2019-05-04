@@ -39,7 +39,7 @@ class Automobile extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['marka_id', 'color_id', 'position_id', 'content', 'price', 'count', 'created_at', 'updated_at'], 'required'],
+            [['marka_id', 'color_id', 'position_id', 'content', 'price', 'count'], 'required'],
             [['marka_id', 'color_id', 'position_id', 'count'], 'integer'],
             [['content'], 'string'],
             [['price'], 'number'],
@@ -56,15 +56,14 @@ class Automobile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'marka_id' => 'Marka ID',
-            'color_id' => 'Color ID',
-            'position_id' => 'Position ID',
-            'content' => 'Content',
-            'price' => 'Price',
-            'count' => 'Count',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'marka_id' => 'Markasi',
+            'color_id' => 'Rangi',
+            'position_id' => 'Pozitsiyasi',
+            'content' => 'Xaraketeristika',
+            'price' => 'Narxi',
+            'count' => 'Soni',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
 

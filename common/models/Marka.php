@@ -33,7 +33,7 @@ class Marka extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name'], 'required'],
             [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -45,10 +45,9 @@ class Marka extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Nomi',
+            'created_at' => 'Yaratilgan',
+            'updated_at' => 'Yangilangan',
         ];
     }
 
