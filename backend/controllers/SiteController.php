@@ -1,7 +1,12 @@
 <?php
 namespace backend\controllers;
 
+use common\models\LoginJournal;
+use Sinergi\BrowserDetector\Browser;
+use Sinergi\BrowserDetector\Device;
+use Sinergi\BrowserDetector\Os;
 use Yii;
+use yii\db\Expression;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -76,7 +81,26 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+        $loginJournal = new LoginJournal();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            $loginJournal->admin_id = Yii::$app->user->id;
+            $loginJournal->ip_address = $this->getUserIpAddr();
+            $loginJournal->login_time = new Expression('NOW()');
+
+            $browser = new Browser();
+            $loginJournal->browser = $browser->getName(). ' ' .$browser->getVersion();
+
+            $os = new Os();
+            $loginJournal->os = $os->getName() . ' ' . $os->getVersion();
+
+            $device = new Device();
+            $loginJournal->device = $device->getName();
+
+            if ($loginJournal->save()) {
+                echo "Success";
+            }
+
             return $this->goBack();
         } else {
             $model->password = '';
@@ -96,6 +120,23 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        $model = new LoginForm();
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
+    protected function getUserIpAddr(){
+        if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }else{
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
 }

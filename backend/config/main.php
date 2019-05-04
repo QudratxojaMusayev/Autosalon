@@ -13,6 +13,7 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'defaultRoute' => 'automobile/index',
+    'name' => 'Autosalon',
     'aliases' => [
         '@adminlte/widgets'=>'@vendor/adminlte/yii2-widgets'
     ],
