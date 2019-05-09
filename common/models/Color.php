@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
@@ -18,7 +17,7 @@ use yii\db\Expression;
  *
  * @property Automobile[] $automobiles
  */
-class Color extends ActiveRecord
+class Color extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -47,11 +46,11 @@ class Color extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'code' => 'Rang kodi',
-            'description' => 'Izoh',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => 'Yangilangan',
+            'id' => Yii::t('yii', 'ID'),
+            'code' => Yii::t('yii', 'Code'),
+            'description' => Yii::t('yii', 'Description'),
+            'created_at' => Yii::t('yii', 'Created At'),
+            'updated_at' => Yii::t('yii', 'Updated At'),
         ];
     }
 

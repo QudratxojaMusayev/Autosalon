@@ -56,14 +56,15 @@ class Automobile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'marka_id' => 'Markasi',
-            'color_id' => 'Rangi',
-            'position_id' => 'Pozitsiyasi',
-            'content' => 'Xaraketeristika',
-            'price' => 'Narxi',
-            'count' => 'Soni',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => 'Yangilangan',
+            'id' => Yii::t('yii', 'ID'),
+            'marka_id' => Yii::t('yii', 'Marka'),
+            'color_id' => Yii::t('yii', 'Color'),
+            'position_id' => Yii::t('yii', 'Position'),
+            'content' => Yii::t('yii', 'Description'),
+            'price' => Yii::t('yii', 'Price'),
+            'count' => Yii::t('yii', 'Count'),
+            'created_at' => Yii::t('yii', 'Created At'),
+            'updated_at' => Yii::t('yii', 'Updated At'),
         ];
     }
 

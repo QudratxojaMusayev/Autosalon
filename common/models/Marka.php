@@ -45,9 +45,10 @@ class Marka extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => 'Nomi',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => 'Yangilangan',
+            'id' => Yii::t('yii', 'ID'),
+            'name' => Yii::t('yii', 'Name'),
+            'created_at' => Yii::t('yii', 'Created At'),
+            'updated_at' => Yii::t('yii', 'Updated At'),
         ];
     }
 

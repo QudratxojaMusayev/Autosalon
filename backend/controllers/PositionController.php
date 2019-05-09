@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Position;
-use yii\data\ActiveDataProvider;
+use common\models\PositionSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class PositionController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Position::find(),
-        ]);
+        $searchModel = new PositionSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -124,25 +124,25 @@ class PositionController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('yii', 'The requested page does not exist.'));
     }
 
     public function actionLists($id)
     {
         //echo "<pre>";print_r($id);die;
-        $countPosts = Position::find()
+        $countPositions = Position::find()
             ->where(['marka_id' => $id])
             ->count();
 
-        $posts = Position::find()
+        $positions = Position::find()
             ->where(['marka_id' => $id])
             ->orderBy('id DESC')
             ->all();
 
-        if($countPosts>0){
-            foreach($posts as $post){
+        if($countPositions>0){
+            foreach($positions as $position){
 
-                echo "<option value='".$post->id."'>".$post->description."</option>";
+                echo "<option value='".$position->id."'>".$position->description."</option>";
             }
         }
         else{

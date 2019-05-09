@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Marka;
-use yii\data\ActiveDataProvider;
+use common\models\ModelSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class MarkaController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Marka::find(),
-        ]);
+        $searchModel = new ModelSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -122,6 +122,6 @@ class MarkaController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('yii', 'The requested page does not exist.'));
     }
 }

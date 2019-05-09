@@ -122,9 +122,17 @@ class SiteController extends Controller
 
         $model = new LoginForm();
 
-        return $this->render('login', [
+        return $this->renderPartial('login', [
             'model' => $model,
         ]);
+    }
+
+    public function actionLanguage($lang) {
+        if ($lang == 'uz') {
+            Yii::$app->language = 'uz';
+        } elseif ($lang == 'en') {
+            Yii::$app->language = 'en';
+        }
     }
 
     protected function getUserIpAddr(){

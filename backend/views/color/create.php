@@ -3,10 +3,10 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model \common\models\Color */
+/* @var $model common\models\Color */
 
-$this->title = 'Rang qo\'shish';
-$this->params['breadcrumbs'][] = ['label' => 'Ranglar', 'url' => ['index']];
+$this->title = Yii::t('yii', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Colors'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="color-create">

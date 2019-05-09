@@ -50,11 +50,12 @@ class Position extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'marka_id' => 'Markasi',
-            'code' => 'Kod',
-            'description' => 'Izoh',
-            'created_at' => 'Yaratilgan',
-            'updated_at' => 'Yangilangan',
+            'id' => Yii::t('yii', 'ID'),
+            'marka_id' => Yii::t('yii', 'Marka'),
+            'code' => Yii::t('yii', 'Code'),
+            'description' => Yii::t('yii', 'Description'),
+            'created_at' => Yii::t('yii', 'Created At'),
+            'updated_at' => Yii::t('yii', 'Updated At'),
         ];
     }
 

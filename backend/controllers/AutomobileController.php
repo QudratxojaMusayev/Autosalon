@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Automobile;
-use yii\data\ActiveDataProvider;
+use common\models\AutomobileSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class AutomobileController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Automobile::find(),
-        ]);
+        $searchModel = new AutomobileSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -122,6 +122,6 @@ class AutomobileController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException(Yii::t('yii', 'The requested page does not exist.'));
     }
 }

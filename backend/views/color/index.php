@@ -4,9 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $searchModel common\models\ColorSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ranglar';
+$this->title = Yii::t('yii', 'Colors');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="color-index">
@@ -14,12 +15,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a("Qo'shish", ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('yii', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

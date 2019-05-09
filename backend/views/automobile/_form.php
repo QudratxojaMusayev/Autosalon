@@ -16,9 +16,9 @@ use yii\widgets\ActiveForm;
 
 
     <?= $form->field($model, 'marka_id')->dropDownList(
-            ArrayHelper::map(Marka::find()->all(), 'id', 'name'),
-            ['prompt' => '-Markani tanlang-',
-             'onchange' => '
+        ArrayHelper::map(Marka::find()->all(), 'id', 'name'),
+        ['prompt' => '-Markani tanlang-',
+            'onchange' => '
              $.post("index.php?r=position/lists&id="+$(this).val(),function( data ) 
                    {
                               $( "select#position" ).html( data );
@@ -27,12 +27,12 @@ use yii\widgets\ActiveForm;
     ) ?>
 
     <?= $form->field($model, 'color_id')->dropDownList(
-            ArrayHelper::map(\common\models\Color::find()->all(), 'id', 'description')
+        ArrayHelper::map(\common\models\Color::find()->all(), 'id', 'description')
     ) ?>
 
     <?= $form->field($model, 'position_id')->dropDownList(
-            ArrayHelper::map(\common\models\Position::find()->all(), 'id', 'description'),
-            ['id' => 'position']
+        ArrayHelper::map(\common\models\Position::find()->all(), 'id', 'description'),
+        ['id' => 'position']
     ) ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
@@ -42,7 +42,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'count')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('yii', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

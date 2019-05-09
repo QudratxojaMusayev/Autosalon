@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Color */
 
-$this->title = 'Yangilash: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Ranglar', 'url' => ['index']];
+$this->title = Yii::t('yii', 'Update: {name}', [
+    'name' => $model->code,
+]);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('yii', 'Colors'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Yangilash';
+$this->params['breadcrumbs'][] = Yii::t('yii', 'Update');
 ?>
 <div class="color-update">
 

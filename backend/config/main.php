@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'language' => 'uz',
     'modules' => [],
     'defaultRoute' => 'automobile/index',
     'name' => 'Autosalon',
@@ -42,16 +43,13 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'baseUrl' => '/',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '<action> => <action>'
-            ],
-        ],
-        */
+//        'urlManager' => [
+//            'baseUrl' => '/',
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'rules' => [
+//            ],
+//        ],
     ],
     'params' => $params,
 ];
